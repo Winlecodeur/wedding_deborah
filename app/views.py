@@ -179,7 +179,7 @@ def scan_invite(request, invite_id):
     whatsap_number = invite.whatsapp_num
     message =f"🎊 💑 Unis par l'amour, le couple TSHIMANGA KASONGO ALBERT & MWAYUMA NGONGO PRINCESS DEBORAH, \n"
     message +=f"Vous invites à célébrer le plus beau jour de leur vie. 🎉 🎊 \n\n\n"
-    message +=    f" 🔔 🔔 Cliquer sur ce lien pour télécharger et consulter votre invitation unique : {f"https://tanya.onrender.com/{invite.id}"}\n"
+    message +=    f" 🔔 🔔 Cliquer sur ce lien pour télécharger et consulter votre invitation unique : {f"https://weddingdeborah-b491437285b8.herokuapp.com/{invite.id}"}\n"
     import urllib.parse
     message_encoded = urllib.parse.quote(message)
     invite.is_sent = True
