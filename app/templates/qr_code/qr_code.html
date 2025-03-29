@@ -73,40 +73,60 @@
 <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
 
 <script>
-    let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
-    scanner.addListener('scan', function (content) {
-        window.location.href = content;
-    });
+    document.addEventListener('DOMContentLoaded', function() {
+        let scanner = new Instascan.Scanner({ 
+            video: document.getElementById('preview'),
+            mirror: false // Désactive le miroir par défaut
+        });
+        
+        scanner.addListener('scan', function(content) {
+            console.log('Code scanné:', content);
+            window.location.href = content;
+        });
 
-    Instascan.Camera.getCameras().then(function (cameras) {
-        if (cameras.length > 0) {
-            // Essaye de sélectionner la caméra arrière (si disponible)
+        // Options pour la sélection de la caméra
+        Instascan.Camera.getCameras().then(function(cameras) {
+            if (cameras.length === 0) {
+                alert('Aucune caméra disponible.');
+                return;
+            }
+
+            // Trie les caméras: essaye de trouver la caméra arrière en premier
             let rearCamera = null;
             let frontCamera = null;
-
-            // Cherche la caméra arrière et la caméra avant dans la liste
+            
             cameras.forEach(function(camera) {
-                if (camera.name.toLowerCase().includes('environment')) {
-                    rearCamera = camera; // Caméra arrière
-                } else if (camera.name.toLowerCase().includes('front')) {
-                    frontCamera = camera; // Caméra avant
+                // Plusieurs façons d'identifier la caméra arrière selon les appareils
+                if (camera.name.toLowerCase().includes('arrière') || 
+                    camera.name.toLowerCase().includes('rear') ||
+                    camera.name.toLowerCase().includes('back') ||
+                    camera.name.toLowerCase().includes('environment') ||
+                    (camera.facing && camera.facing === 'environment')) {
+                    rearCamera = camera;
+                } else if (camera.name.toLowerCase().includes('avant') || 
+                          camera.name.toLowerCase().includes('front') ||
+                          (camera.facing && camera.facing === 'user')) {
+                    frontCamera = camera;
                 }
             });
 
-            // Si une caméra arrière est trouvée, on la lance
-            if (rearCamera) {
-                scanner.start(rearCamera);
-            } else if (frontCamera) {
-                // Sinon, utilise la caméra avant
-                scanner.start(frontCamera);
+            // Essaye d'utiliser la caméra arrière d'abord, sinon la caméra avant
+            const selectedCamera = rearCamera || frontCamera || cameras[0];
+            
+            if (selectedCamera) {
+                scanner.start(selectedCamera).then(function() {
+                    console.log('Caméra démarrée:', selectedCamera.name);
+                }).catch(function(e) {
+                    console.error('Erreur de démarrage de la caméra:', e);
+                    alert('Impossible de démarrer la caméra: ' + e.message);
+                });
             } else {
-                alert('Aucune caméra trouvée.');
+                alert('Aucune caméra valide trouvée.');
             }
-        } else {
-            alert('Aucune caméra disponible.');
-        }
-    }).catch(function (e) {
-        console.error(e);
+        }).catch(function(e) {
+            console.error('Erreur d\'accès à la caméra:', e);
+            alert('Erreur d\'accès à la caméra: ' + e.message);
+        });
     });
 </script>
 
