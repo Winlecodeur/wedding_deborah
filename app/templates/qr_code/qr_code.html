@@ -70,6 +70,8 @@
     </section>
 <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
 
+<script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+
 <script>
     let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
     scanner.addListener('scan', function (content) {
@@ -78,35 +80,36 @@
 
     Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
-            // Chercher la caméra arrière (généralement celle qui a 'environment' dans son nom)
+            // Essaye de sélectionner la caméra arrière (si disponible)
             let rearCamera = null;
             let frontCamera = null;
-            
-            // On parcourt les caméras pour identifier la caméra arrière et avant
+
+            // Cherche la caméra arrière et la caméra avant dans la liste
             cameras.forEach(function(camera) {
-                if (camera.name.includes('environment')) {
+                if (camera.name.toLowerCase().includes('environment')) {
                     rearCamera = camera; // Caméra arrière
-                } else if (camera.name.includes('front')) {
+                } else if (camera.name.toLowerCase().includes('front')) {
                     frontCamera = camera; // Caméra avant
                 }
             });
 
-            // Si une caméra arrière est trouvée, l'utiliser
+            // Si une caméra arrière est trouvée, on la lance
             if (rearCamera) {
                 scanner.start(rearCamera);
             } else if (frontCamera) {
-                // Sinon, si une caméra avant est trouvée, utiliser celle-ci
+                // Sinon, utilise la caméra avant
                 scanner.start(frontCamera);
             } else {
                 alert('Aucune caméra trouvée.');
             }
         } else {
-            alert('Aucune caméra trouvée.');
+            alert('Aucune caméra disponible.');
         }
     }).catch(function (e) {
         console.error(e);
     });
 </script>
+
 
 
     <script src="{% static 'js/responsive.js' %}"> </script>
