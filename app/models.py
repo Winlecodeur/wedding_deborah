@@ -60,7 +60,7 @@ class Invite(models.Model):
             super().save(*args, **kwargs)
         # Génération automatique du QR code unique pour chaque invité
         if not self.qr_code:
-            qr_image = self.generate_custom_qr_code(f"http://127.0.0.1:8000/{self.id}")  # Lien vers la page d'invité spécifique
+            qr_image = self.generate_custom_qr_code(f"https://weddingdeborah-b491437285b8.herokuapp.com/{self.id}")  # Lien vers la page d'invité spécifique
             self.qr_code.save(f'qr_{self.id}.png', qr_image, save=False)
         super().save(*args, **kwargs)
 
