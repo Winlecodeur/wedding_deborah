@@ -68,23 +68,34 @@
         </div>
         
     </section>
-    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+<script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
 
-    <script>
-        let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
-        scanner.addListener('scan', function (content) {
-            window.location.href = content;
-        });
-        Instascan.Camera.getCameras().then(function (cameras) {
-            if (cameras.length > 0) {
-                scanner.start(cameras[0]);
+<script>
+    let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+    scanner.addListener('scan', function (content) {
+        window.location.href = content;
+    });
+
+    Instascan.Camera.getCameras().then(function (cameras) {
+        if (cameras.length > 0) {
+            // Cherche la caméra arrière (généralement celle avec id 'environment')
+            let rearCamera = cameras.find(camera => camera.name.includes('environment'));
+            
+            if (rearCamera) {
+                // Si la caméra arrière est trouvée, démarre-la
+                scanner.start(rearCamera);
             } else {
-                alert('Aucune caméra trouvée.');
+                // Si la caméra arrière n'est pas trouvée, démarre la première caméra
+                scanner.start(cameras[0]);
             }
-        }).catch(function (e) {
-            console.error(e);
-        });
-    </script>
+        } else {
+            alert('Aucune caméra trouvée.');
+        }
+    }).catch(function (e) {
+        console.error(e);
+    });
+</script>
+
 
     <script src="{% static 'js/responsive.js' %}"> </script>
 </body>
