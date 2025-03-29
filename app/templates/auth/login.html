@@ -1,0 +1,25 @@
+<!DOCTYPE html>{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/auth/login.css' %}">
+    <title>Connection</title>
+</head>
+<body>
+    <div class="div-login">
+        <div class="div-form">
+            <h1> SE CONNECTER </h1>
+            <form  method="post">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit">se connecter </button>
+            </form>
+        </div>
+        <div class="infos">
+            <a href="">contactez le technicien</a>
+            <a href="">  vous avez des question?  </a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+.err{
+    display: grid;
+    justify-content: center;
+}
+.err p img {
+    width: 300px;
+    height: 300px;
+    animation: float 3s infinite ease-in-out, blink 1.5s infinite alternate;
+}
+
+
+/* Animation de flottement */
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+/* Animation de clignotement */
+@keyframes blink {
+    0% { opacity: 1; }
+    100% { opacity: 0.7; }
+}
+
+.err  h2 {
+    font-size: 40px;
+}
+
+@media (max-width:946px) {
+    .err  h2{
+        font-size: 20px;
+    }
+    
+}

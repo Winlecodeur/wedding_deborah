@@ -1,0 +1,94 @@
+<!DOCTYPE html>{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static   'css/homes.css' %}" ref="text/css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="popup" class="popup">
+        <p>Faites glisser</p>
+      </div>
+   <div class="welcome " id="welcome">
+    <span class="">
+        welcome dans votre invitation virtuel
+    </sapn> 
+    
+   </div>
+    <div class="img-tete" id="img-1">
+        <div class="img-tete-accueil item ">
+            <img src="{% static 'img/wedding inv debo 5 1.jpg' %}" alt="">
+        </div>
+        <div class="text item">
+            <p class="P-text item">
+                <h1 class="h1-infos">{% if invite.statut  == 'COUPLE' %}
+                    <img src="{% static 'img/icons8-couple-50.png' %}" alt="" id="img"> <span class="span-h1"> COUPLE </span>
+                    {% elif invite.statut == 'MR'  %}
+                    <img src="{% static 'img/icons8-user-50.png' %}" alt="" id="img"> <span  class="span-h1">MONSIEUR </span>
+                    {% elif invite.statut == 'MADAME'  %}
+                    <img src="{% static 'img/icons8-female-user-30.png' %}" alt="" id="img">  <span  class="span-h1"> MADAME </span>
+                    {% endif   %}</h1>
+                <h1 class="h1-infos">  {{invite.name}} {{invite.first_name}} </h1>
+                <small class="small-infos">
+                    le couple Albert et Deborah vous invite à participer à leur mariage coutumier, ce precedent vous sert d'invitation et vous permet de participer à l'événement, veuillez defiler vers le bas pour consulter et telecharger votre invitation.
+                </small>
+            </p>
+        </div>
+    </div>
+    <div class="img-tete2" id="img-2">
+       
+        <div class="img-tete-accueil2 item">
+            
+            <img src="{{invite.qr_code.url}}" alt="">
+            
+        </div>
+        <small class="small-qr item">
+            <span>Note </span> : cette invitation QR CODE est unique et ne pourra être scanner qu'une fois le jour J, gardez-la et eviter de la partager, en cas d'action suspect votre QR CODE sera desactivée ainsi que votre invitation virtuelle.
+        </small>
+        <div class="download item" >
+            <a href="{{invite.qr_code.url}}" download=""> 
+                <img src="{%  static  'img/icons8-download-48 (1).png' %}" alt="">
+                Telecharger votre invitation </a>
+        </div>
+    </div>
+
+    <div class="form" id="form">
+       <div class="form-size item">
+        <h1> ENVOYEZ UN MESSAGE AUX MARIES </h1>
+        <form action="{% url 'oath_home_form' invite_id=invite.id %}#msg" method="post">
+            <div class="" style="display: none;">
+                <span>  Nom </span>
+                <input type="text" name="invite" id="invite.id"  value="{{invite.id}}"  >
+            </div>
+            {% csrf_token %}
+           
+           <div class="">
+            <span>
+                Votre Message
+            </span>
+            <textarea name="text" id="text"></textarea>
+           </div>
+           <div class="btn">
+            <button type="submit">Envoyer</button>
+           </div>
+
+        </form>
+       </div>
+    </div>
+   <div class="div-msg">
+   <div class="div">
+    {% for oath in oaths  %}
+    <div class="msg" id="msg">
+      <p >
+          <span>{{oath.text}}</span>
+  
+          <a href="{% url 'oath_home_delete' invite.id  oath.id %}#msg"> <img src="{% static 'img/icons8-delete-30.png' %}" alt="delete msg ">   </a>
+      </p>
+    </div>
+      {% endfor  %}
+   </div>
+   </div>
+    <script src="{% static 'js/home.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,717 @@
+body{
+    background-color: rgb(227, 227, 227);
+}
+header {
+    position: fixed;
+    background-color: white;
+    width: 100%;
+    height: 40px;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+header a img {
+    margin-left: 4em;
+    border: 2px blue solid ;
+}
+.nav-menu{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 100;
+    width: 300px;
+    height: 100%;
+    background-color: white;
+}
+.nav-menu h1 {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    align-content: baseline;
+    color: rgb(184, 140, 6);
+}
+.nav-menu h1 img {
+    width: 1em;
+    height: 1em;
+}
+.nav-menu ul {
+    padding: 10px 10px;
+
+}
+.nav-menu ul li{
+    list-style: none;
+    height: 40px;
+    margin-top: 1em;
+}
+.nav-menu ul li a {
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+    align-content: center;
+    font-size: 18px;
+    color: gray;
+    text-decoration: none;
+}
+.nav-menu ul li .logout:hover{
+    color: red;
+}
+.nav-menu ul li a:hover{
+    padding: 10px 15px;
+    border-radius: 25px;
+    box-shadow: 0 0 4px 0 rgb(184, 140, 6);
+    color: black;
+}
+.nav-menu ul li a img {
+    margin-right: 2px;
+    width: 1em;
+    height: 1em;
+}
+.tete .div-tete2 .wst{
+    background-color: none;
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+.tete .div-tete2 .wst img{
+    width: 2em;
+    height: 2em;
+}
+.tete{
+    display: flex;
+    margin-top: 5em;
+    justify-content: center;
+}
+.tete .div-tete{
+    margin-left: 22em;
+    display: grid;
+    gap: 10px;
+    justify-content: center;
+    grid-template-columns: repeat(3, 1fr);
+}
+.tete .div-tete div a {
+    padding: 10px 10px;
+    height: 100px;
+    overflow-y: auto;
+    display: flex;
+    background-color: white;
+    border-radius: 25px;
+    text-decoration: none;
+    align-items: center;
+    align-self: center;
+}
+.tete .div-tete div a img{
+    width: 70px;
+    height: 70px;
+}
+.tete .div-tete div a div {
+    color: black;
+}
+.tete .div-tete div a div h3 {
+    display: flex;
+    color: rgb(184, 140, 6);
+    justify-content: center;
+}
+.tete .div-tete div a div  span{
+    color: gray;
+}
+
+.div-tete2{
+    margin-left: 20em;
+    width: 500px;
+    display: grid;
+    justify-content: center;
+    place-items: center;
+    gap: 50px;
+    grid-template-columns: repeat(2,1fr);
+}
+.div-tete2 h3{
+    display: flex;
+    justify-content: center;
+    color: rgb(184, 140, 6);
+}
+.div-tete2 div{
+    padding: 20px 10px;
+    background-color: white;
+    border-radius: 25px;
+    height: 400px;
+    width: 350px;
+    overflow-y: auto;
+
+}
+
+.div-tete2 div article{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    box-shadow: 0 1px   0 0  black  ;
+}
+.div-tete2 div  article a {
+
+    color: rgb(5, 3, 48);
+    text-decoration: none;
+    
+}
+.div-tete2 div  article .span   {
+    padding: 8px 8px;
+    width: 150px;
+    max-width: 150px;
+    word-wrap:keep-all;
+    color: rgb(5, 3, 48);
+    text-decoration: none;
+    
+}
+.div-tete2 div  article .delete  {
+    background-color: red;
+    padding: 5px 5px;
+    border-radius: 4px;
+}
+.div-tete2 div  article .edit  {
+    background-color: rgb(0, 102, 255);
+    padding: 5px 5px;
+    border-radius: 4px;
+}
+.div-tete2 div  article  img  {
+    width: 1em;
+    height: 1em;
+}
+.menu-toggle{
+    display: none;
+}
+::-webkit-scrollbar{
+    width: 10px;
+    padding: 10px 10px;
+}
+::-webkit-scrollbar-button{
+    padding: 5px 5px;
+}
+::-webkit-scrollbar-thumb{
+    
+    background-color: rgb(184, 140, 6);
+    border-radius: 15px;
+}
+#preview{
+    border-radius: 25px;
+}
+.tete .photo{
+    margin-left: 22em;
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    justify-content: center;
+    place-items: center;
+
+}
+/* partie de tables css */
+.table-form nav {
+    padding: 10px 10px;
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+}
+.table-form form input{
+    border: 1px solid rgb(184, 140, 6);
+    outline: none;
+    border-radius: 5px;
+    padding: 10px 10px;
+
+}
+.table-form form input:focus{
+    border: 2px solid rgb(184, 140, 6);
+}
+.table-form form{
+    padding: 10px 10px;
+}
+.table-form form button{
+    
+    width: 100%;
+    display: grid;
+    place-items: center;
+    justify-content: center;
+    background-color: rgb(184, 140, 6);
+    color: white;
+    cursor: pointer;
+    border:none;
+    border-radius: 15px;
+    padding: 10px 70px;
+}
+.table-form form button:hover , .table-form form button:focus{
+    letter-spacing: 1px;
+}
+/*  message css */
+.error li {
+    color: red;
+    list-style: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.success li {
+    color: green;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.table-infos form nav label{
+  
+    font-weight: 800;
+}
+.div-tete2 div h3 form{
+    margin-left: 0.3em;
+    background-color: rgb(227, 227, 227);
+    border-radius: 25px;
+    padding: 7px 7px;
+    align-items: center;
+    align-content: center;
+    display: flex;
+    justify-content: baseline;
+}
+.table_h3{
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+.div-tete2 .table_h3 form input{
+    width: 80px;
+    outline: none;
+    border: none;
+    border-radius: 30px 0 0 30px   ;
+    background-color: rgb(227, 227, 227);
+
+}
+.div-tete2 .table_h3 form button {
+    border: none;
+    background-color: transparent;
+}
+.div-tete2 .table_h3 form button img{
+    background-color: rgb(227, 227, 227);
+    width: 0.7em;
+    height: 0.7em;
+}
+.empty{
+    color: red;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-top: 5em;
+}
+
+.table-detail nav span{
+    color: gray;
+    font-weight: 700;
+}
+/* end of table css */
+
+/* START of invite css */
+/* invite form*/
+.tete .div-tete2 .invite-form {
+    width: 500px;
+    max-width: 500px;
+}
+.tete .div-tete2 .invite-form form{
+    padding: 10px 30px;
+}
+.tete .div-tete2 .invite-form form input{
+    border-radius: 5px;
+    padding: 6px 6px;
+    outline: none;
+    border: 1px solid rgb(184, 140, 6);
+}
+.tete .div-tete2 .invite-form form input:focus{
+    border: 2px solid rgb(184, 140, 6);
+}
+select{
+    outline: none;
+    border-color: rgb(184, 140, 6);
+}
+select:focus{
+    border: 2px solid rgb(184, 140, 6);
+    border-color: rgb(184, 140, 6);
+}
+.tete .div-tete2 .invite-form form nav {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: repeat(2,1fr);
+    margin-top: 0.7em;
+
+}
+.tete .div-tete2 .invite-form form button{
+    border: none;
+    background-color: rgb(184, 140, 6);
+    color: white;
+    border-radius: 25px;
+    padding: 10px 10px;
+    margin-top: 2em;
+    cursor: pointer;
+}
+.tete .div-tete2 .invite-form form button:hover{
+    letter-spacing: 1px;
+    border-radius: 1px;
+}
+.tete .div-tete2 .invite-form form{
+    display: grid;
+    justify-content: center;
+}
+
+@media screen {
+
+    @media (max-width:975px){
+        .tete .photo{
+            margin-left: 0em;
+        }
+        /* here's scan css */
+        #preview{
+
+            width: 350px;
+            border-radius: 25px;
+        }
+        /* end */
+        /*  header */
+
+        header span {
+            margin-left: 50px;
+            font-size: 10px;
+            width: 200px;
+
+        }
+        header{
+            height: 60px;
+        }
+        /* MENU TOGGLE */
+        .menu-toggle{
+            align-items: center;
+            position: fixed;
+            display: flex;
+            padding: 10px 10px;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            justify-content: center;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            flex-direction: column;
+
+        }
+        .menu-toggle::before{
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 3px;
+            border-radius: 15px;
+            background-color: rgb(184, 140, 6);
+            box-shadow: 0 10px 0 rgb(184, 140, 6);
+            transition: 0.5s;
+            transform: translateY(-10px);
+
+        }
+        .menu-toggle.active::before{
+            box-shadow: 0 0 0 rgb(184, 140, 6);
+            transform: translateY(0) rotate(135deg);
+        }
+        .menu-toggle::after{
+            position: absolute;
+            content: "";
+            width: 30px;
+            height: 3px;
+            
+            border-radius: 15px;
+            background-color: rgb(184, 140, 6);
+            
+            transition: 0.5s;
+            transform: translateY(10px);
+
+        }
+        .menu-toggle.active::after{
+            
+            transform: translateY(0) rotate(-135deg);
+        }
+        .nav-menu.responsive{
+            top: 50px;
+            display: flex;
+            flex-direction: column;
+            grid-template-columns: repeat(1,1fr);
+            height: 300px;
+            border-radius: 35px;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            right: 50%;
+            top: 50%;
+            z-index: 1000;
+        }
+        .nav-menu h1, ul {
+            line-height: 0px;
+            
+        }
+        .nav-menu h1 {
+            line-height: 0px;
+            
+            font-size: 15px;
+        }
+        .nav-menu ul li {
+            padding: 0;
+            margin-top: 0;
+        }
+        .nav-menu ul li a {
+            font-size: 13px;
+        }
+        /* end of menu toggle */
+        .tete  .div-tete {
+            margin-left: 0em;
+            display: grid;
+            grid-template-columns: repeat(1,1fr);
+            justify-content: center;
+            place-items: center;
+        }
+        .tete .div-tete a {
+            width: 250px;
+        }
+        .tete .div-tete div a img {
+            width: 30px;
+            height: 30px;
+        }
+        .tete .div-tete div a h3 {
+            font-size: 15px;
+        }
+        .tete .div-tete div a div {
+            margin-left: 1em;
+        }
+        .tete .div-tete div a span {
+            font-size: 13px;
+        }
+        /* be sure that nav-menu is display : none */
+        .nav-menu {
+            display: none;
+            
+        }
+        /* end (be sure that nav-menu is display : none) */
+        .div-tete2  {
+            
+            display: flex;
+            flex-direction: column;
+            margin-left: 0;
+        }
+       .div-tete2  div {
+        width: 320px;
+       }
+       /* invite css responsive for form */
+       .tete .div-tete2 .invite-form {
+        width: 350px;
+       }
+       /* end */
+      
+    }
+    @media (max-width:980px){
+        .tete .div-tete div a div {
+            font-size: 12px;
+        }
+    }
+    @media (min-width:981px){
+        .nav-menu{
+            width: 200px;
+        }
+        .div-tete2{
+            margin-left:10em;
+        }
+        .div-tete2 div{
+            width: 300px;
+        }
+        .tete .div-tete a {
+            width: 220px;
+        }
+        .tete .div-tete  {
+            margin-left: 10em;
+        }
+        .tete  {
+            margin-left: auto;
+            padding: 50px 50px;
+        }
+        .tete .photo{
+            margin-left: 9em;
+        }
+    }
+    @media (min-width:1200px){
+        body{
+            background-color: rgb(227, 227, 227);
+        }
+        header {
+            position: fixed;
+            background-color: white;
+            width: 100%;
+            height: 40px;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+        }
+        header a img {
+            margin-left: 4em;
+            border: 2px blue solid ;
+        }
+        .nav-menu{
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            z-index: 100;
+            width: 300px;
+            height: 100%;
+            background-color: white;
+        }
+        .nav-menu h1 {
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+            align-content: baseline;
+            color: rgb(184, 140, 6);
+        }
+        .nav-menu h1 img {
+            width: 1em;
+            height: 1em;
+        }
+        .nav-menu ul {
+            padding: 10px 10px;
+        
+        }
+        .nav-menu ul li{
+            list-style: none;
+            height: 40px;
+            margin-top: 1em;
+        }
+        .nav-menu ul li a {
+            display: flex;
+            justify-content: baseline;
+            align-items: center;
+            align-content: center;
+            font-size: 18px;
+            color: gray;
+            text-decoration: none;
+        }
+        .nav-menu ul li .logout:hover{
+            color: red;
+        }
+        .nav-menu ul li a:hover{
+            padding: 10px 15px;
+            border-radius: 25px;
+            box-shadow: 0 0 4px 0 rgb(184, 140, 6);
+            color: black;
+        }
+        .nav-menu ul li a img {
+            margin-right: 2px;
+            width: 1em;
+            height: 1em;
+        }
+        .tete{
+            display: flex;
+            margin-top: 5em;
+            justify-content: center;
+        }
+        .tete .div-tete{
+            margin-left: 22em;
+            display: grid;
+            gap: 10px;
+            justify-content: center;
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .tete .div-tete div a {
+            padding: 10px 10px;
+            height: 100px;
+            overflow-y: auto;
+            display: flex;
+            background-color: white;
+            border-radius: 25px;
+            text-decoration: none;
+            align-items: baseline;
+            align-self: center;
+        }
+        .tete .div-tete div a img{
+            width: 30px;
+            height: 30px;
+        }
+        .tete .div-tete div a div {
+            color: black;
+        }
+        .tete .div-tete div a div h3 {
+            display: flex;
+            color: rgb(184, 140, 6);
+            justify-content: center;
+        }
+        .tete .div-tete div a div  span{
+            color: gray;
+        }
+        
+        .div-tete2{
+            margin-left: 20em;
+            width: 500px;
+            display: grid;
+            justify-content: center;
+            place-items: center;
+            gap: 50px;
+            grid-template-columns: repeat(2,1fr);
+        }
+        .div-tete2 h3{
+            display: flex;
+            justify-content: center;
+            color: rgb(184, 140, 6);
+        }
+        .div-tete2 div{
+            padding: 20px 10px;
+            background-color: white;
+            border-radius: 25px;
+            height: 400px;
+            width: 350px;
+            overflow-y: auto;
+        
+        }
+        
+        .div-tete2 div article{
+            display: flex;
+            align-items: center;
+            align-content: center;
+            justify-content: space-between;
+            box-shadow: 0 1px   0 0  black  ;
+        }
+        .div-tete2 div  article a {
+        
+            color: rgb(5, 3, 48);
+            text-decoration: none;
+            
+        }
+        .div-tete2 div  article .span   {
+            padding: 8px 8px;
+            width: 150px;
+            max-width: 150px;
+            word-wrap:keep-all;
+            color: rgb(5, 3, 48);
+            text-decoration: none;
+            
+        }
+        .div-tete2 div  article .delete  {
+            background-color: red;
+            padding: 5px 5px;
+            border-radius: 4px;
+        }
+        .div-tete2 div  article .edit  {
+            background-color: rgb(0, 102, 255);
+            padding: 5px 5px;
+            border-radius: 4px;
+        }
+        .div-tete2 div  article  img  {
+            width: 1em;
+            height: 1em;
+        }
+        .menu-toggle{
+            display: none;
+        }
+      
+    }
+    
+}

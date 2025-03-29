@@ -1,0 +1,68 @@
+.div-login{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 100%;
+    width: 100%;
+}
+.div-login  .div-form {
+    margin-top: 10em;
+    box-shadow: 0 0 2px 0 rgb(184, 140, 6);
+    padding: 30px 40px;
+    border-radius: 25px;
+   
+}
+.div-login .div-form h1{
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    justify-content: center;
+    color: rgb(184, 140, 6);
+}
+.div-login .div-form form input{
+    border: 1px solid rgb(184, 140, 6);
+    border-radius: 5px;
+    outline: none;
+    width: 200px;
+}
+.div-login .div-form form form{
+    display: grid;
+    justify-content: center;
+}
+
+
+.div-login .div-form form input:focus{
+    border: 2px solid rgb(184, 140, 6);
+    padding: 4px 4px;
+   
+    
+}
+.div-login .div-form form button{
+    border: none;
+    border-radius: 25px;
+    background-color: rgb(184, 140, 6);
+    color: white;
+    display: flex;
+    padding: 10px 100px;
+    place-items: center;
+    justify-content: center;
+    margin-top: 2em;
+    cursor: pointer;
+}
+.div-login .div-form form button:hover{
+    border-radius: 10px;
+    background-color: rgb(128, 97, 5);
+    transition: 0.3s ease-in-out  ;
+    transform: translateY(-5px);
+}
+
+.div-login .infos {
+    margin-top: 4em;
+    display: flex;
+    justify-content: center;
+}
+.div-login .infos a {
+    color: rgb(43, 146, 255);
+    font-size: 13px;
+    margin-left: 1em;
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/invite.css' %}">
+    <title>Profil</title>
+</head>
+
+<body>
+    <header>
+        <span>
+            welcome dans l'administration de l'app web wedding Deborah
+        </span>
+        <a href="{% url 'scan' %}"title="scanner un QR CODE"><img src="{% static 'img/icons8-scan-qr-code-24.png' %}" alt=""></a>
+
+    </header>
+    <div class="menu-toggle"></div>
+    <nav class="nav-menu">
+        <h1> <img src="{% static 'img/icons8-admin-settings-male-50.png' %}" alt=""> Administration </h1>
+        <ul>
+            <li><a  href="{% url 'profile' %}"><img src="{% static  'img/icons8-dashboard-24.png' %}" alt="">Dashboard</a></li>
+            <li><a href="{%  url 'invite' %}"><img src="{% static  'img/icons8-user-50.png' %}" alt="">invités</a></li>
+            <li><a href="{%  url 'oath' %}"><img src="{% static  'img/icons8-message-50.png' %}" alt="">messages
+                    reçus</a></li>
+            <li><a href="{%  url 'table_form' %}"><img src="{% static  'img/icons8-table-50.png' %}" alt="">tables</a></li>
+            <li><a href="{% url 'logout_view' %}" class="logout"><img src="{% static  'img/icons8-logout-50.png' %}" alt="">logout</a></li>
+        </ul>
+    </nav>
+
+    <section class="tete">
+        <div class="div-tete">
+            <div>
+                <a href="{% url 'invite_form' %}"><img src="{% static  'img/icons8-user-50.png' %}" alt="">
+                    <div>
+                        <h3>Ajouter un invité</h3>
+                        <span>cliquer ici pour ajouter un invité </span>
+                    </div>
+                </a>
+            </div>
+            <div>
+                <a href="{%  url 'table_form' %}"><img src="{% static  'img/icons8-table-50.png' %}" alt="">
+                    <div>
+                        <h3>Ajouter une table </h3>
+                        <span>cliquer ici pour ajouter une table </span>
+                    </div>
+                </a>
+            </div>
+            <div>
+                <a href="{%  url 'oath' %}"><img src="{% static  'img/icons8-message-50.png' %}" alt="">
+                    <div>
+                        <h3>Messages reçus </h3>
+                        <span>cliquer ici pour consulter vos messages reçus </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    <section class="tete">
+        <div class="div-tete2" id="form">
+            <div>
+                {% if messages %}
+                <ul class="messages success">
+                    {% for message in messages %}
+                    <li class="{% if message.tags %}{{ message.tags }}{% endif %}">
+                        {{ message }}
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <h3 class="table_h3"> Vos derniers invités créés
+                    <form action="{% url 'invite_search' %}#form" method="get">
+                        <input name="q" value="{{request.GET.get}}" placeholder=" ex. deborah ">
+                        <button type="submit"><img src="{% static 'img/icons8-search-50.png' %}" alt=""></button>
+                    </form>
+                </h3>
+                {% for invite in resultats %}
+                <article>
+                    <span class="span">
+                        <a href="{% url 'invite_detail' invite.id %}#form"> {{invite.name}}  {{invite.first_name}} </a>
+                    </span>
+                    <span>
+                        <a href="{% url 'invite_delete' invite.id %}#form" class="delete"> <img src="{% static 'img/icons8-delete-30.png' %}" alt=""></a>
+                        <a href="{% url  'invite_edit' invite.id %}#form" class="edit"> <img src="{% static 'img/icons8-edit-24.png' %}" alt=""></a>
+                        <a href="{% url  'invite_edit' invite.id %}#form" class="edit" style="background-color: white;box-shadow: 0 0 2px 0 gray;" > <img src="{% static 'img/icons8-whatsapp-48.png' %}" alt="" ></a>
+                    </span>
+                </article> {% empty %}
+                <p class="empty">  Aucun élément trouver avec la clé :  {{query}}  </p>
+                <br> {% endfor %}
+            </div>
+            <div>
+                {% if messages %}
+                <ul class="messages success">
+                    {% for message in messages %}
+                    <li class="{% if message.tags %}{{ message.tags }}{% endif %}">
+                        {{ message }}
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <h3 class="table_h3"> Vos Invitations non envoyées
+                    <form action="{% url 'invite_search' %}#form" method="get">
+                        <input name="q" value="{{request.GET.get}}" placeholder=" ex. deborah ">
+                        <button type="submit"><img src="{% static 'img/icons8-search-50.png' %}" alt=""></button>
+                    </form>
+                </h3>
+                
+                {% for invite in results %}
+                <article>
+                    <span class="span">
+                        <a href="{% url 'invite_detail' invite.id %}#form"> {{invite.name}}  {{invite.first_name}} </a>
+                    </span>
+                    <span>
+                        <a href="{% url 'invite_delete' invite.id %}#form" class="delete"> <img src="{% static 'img/icons8-delete-30.png' %}" alt=""></a>
+                        <a href="{% url  'invite_edit' invite.id %}#form" class="edit"> <img src="{% static 'img/icons8-edit-24.png' %}" alt=""></a>
+                        <a href="{% url  'invite_edit' invite.id %}#form" class="edit" style="background-color: white;box-shadow: 0 0 2px 0 gray;" > <img src="{% static 'img/icons8-whatsapp-48.png' %}" alt="" ></a>
+                    </span>
+                </article>
+                {% empty %}
+                <p class="empty">  Aucun élément trouver avec la clé :  {{query}}  </p>
+                <br> {% endfor %}
+            </div>
+           
+        </div>
+    </section>
+    <script src="{% static 'js/responsive.js' %}"> </script>
+</body>
+
+</html>

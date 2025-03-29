@@ -1,0 +1,91 @@
+<!DOCTYPE html>{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/profile/profile.css' %}">
+    <title>Profil</title>
+</head>
+<body>
+    <header> <div class="menu-toggle"></div>
+        <span>
+            welcome dans l'administration de l'app web  wedding carine
+        </span>
+        <a href="{% url 'scan' %}" title="scanner un QR CODE"><img src="{% static 'img/icons8-scan-qr-code-24.png' %}" alt=""></a>
+        
+    </header>
+   
+    <nav class="nav-menu">
+        <h1> <img src="{% static 'img/icons8-admin-settings-male-50.png' %}" alt=""> Administration </h1>
+        <ul>
+            <li><a href="{% url 'profile' %}"><img src="{% static  'img/icons8-dashboard-24.png' %}" alt="">Dashboard</a></li>
+            <li><a href="{%  url 'invite' %}"><img src="{% static  'img/icons8-user-50.png' %}" alt="">invités</a></li>
+            <li><a href="{%  url 'oath' %}"><img src="{% static  'img/icons8-message-50.png' %}" alt="">messages reçus</a></li>
+            <li><a href="{%  url 'table' %}"><img src="{% static  'img/icons8-table-50.png' %}" alt="">tables</a></li>
+            <li><a href="{% url 'logout_view' %}" class="logout"><img src="{% static  'img/icons8-logout-50.png' %}" alt="">logout</a></li>
+        </ul>
+    </nav>
+    
+    <section class="tete" style="display: none;">
+        <div class="div-tete">
+            <div>
+             <a href="{% url 'invite' %}"><img src="{% static  'img/icons8-user-50.png' %}" alt="">
+                <div>
+                    <h3>Ajouter un invité</h3>
+                    <span>cliquer ici pour ajouter un invité </span>
+                </div>
+            </a>   
+            </div>
+            <div>
+                <a href="{%  url 'table' %}"><img src="{% static  'img/icons8-table-50.png' %}" alt="">
+                <div>
+                    <h3>Ajouter une table </h3>
+                    <span>cliquer ici pour ajouter une table </span>
+                </div>
+                </a>
+            </div>
+            <div>
+                <a href="{%  url 'oath' %}"><img src="{% static  'img/icons8-message-50.png' %}" alt=""> 
+                <div>
+                    <h3>Messages reçus </h3>
+                    <span>cliquer ici pour consulter vos messages reçus </span>
+                </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    <section class="tete" id="tete">
+      
+     
+            <div class="photo">
+                <h3>  placer le QR CODE à scanner dans l'objectif </h3>
+               
+                <article>
+                    <video id="preview" ></video>
+                   </article>
+              
+            </div>
+        </div>
+        
+    </section>
+    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+
+    <script>
+        let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+        scanner.addListener('scan', function (content) {
+            window.location.href = content;
+        });
+        Instascan.Camera.getCameras().then(function (cameras) {
+            if (cameras.length > 0) {
+                scanner.start(cameras[0]);
+            } else {
+                alert('Aucune caméra trouvée.');
+            }
+        }).catch(function (e) {
+            console.error(e);
+        });
+    </script>
+
+    <script src="{% static 'js/responsive.js' %}"> </script>
+</body>
+</html>
