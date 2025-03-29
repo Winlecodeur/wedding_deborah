@@ -78,15 +78,27 @@
 
     Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
-            // Cherche la caméra arrière (généralement celle avec id 'environment')
-            let rearCamera = cameras.find(camera => camera.name.includes('environment'));
+            // Chercher la caméra arrière (généralement celle qui a 'environment' dans son nom)
+            let rearCamera = null;
+            let frontCamera = null;
             
+            // On parcourt les caméras pour identifier la caméra arrière et avant
+            cameras.forEach(function(camera) {
+                if (camera.name.includes('environment')) {
+                    rearCamera = camera; // Caméra arrière
+                } else if (camera.name.includes('front')) {
+                    frontCamera = camera; // Caméra avant
+                }
+            });
+
+            // Si une caméra arrière est trouvée, l'utiliser
             if (rearCamera) {
-                // Si la caméra arrière est trouvée, démarre-la
                 scanner.start(rearCamera);
+            } else if (frontCamera) {
+                // Sinon, si une caméra avant est trouvée, utiliser celle-ci
+                scanner.start(frontCamera);
             } else {
-                // Si la caméra arrière n'est pas trouvée, démarre la première caméra
-                scanner.start(cameras[0]);
+                alert('Aucune caméra trouvée.');
             }
         } else {
             alert('Aucune caméra trouvée.');
