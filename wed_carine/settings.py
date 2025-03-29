@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-+ne)5&vva!e=3-ay0%$b00jbi$k2gg+6np(9ok==4(0(+)=q04
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['weddingdeborah-b491437285b8.herokuapp.com']
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 SESSION_ENGINE = "django.contrib.sessions.backends.db"  # Utilisation de la base de données pour stocker les sessions
